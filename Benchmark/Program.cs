@@ -1,7 +1,4 @@
 ﻿using BenchmarkDotNet.Running;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Benchmark
 {
@@ -12,7 +9,7 @@ namespace Benchmark
             BenchmarkRunner.Run<WriteBench>();
 
             Console.WriteLine("Press any key for exit");
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
 }

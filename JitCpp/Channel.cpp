@@ -31,6 +31,9 @@ void Channel<T>::Add(T value)
     auto operation = channel->WriterOperation;
 
     //channel->WriterOperation++;
+    //auto ppc = (int*) channel;
+
+    //ppc->WriterOperation++
 
     auto data = channel->Storage[operation % DATA_CAPACITY];
     auto seg = data->Writer;

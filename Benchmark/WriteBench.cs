@@ -33,7 +33,7 @@ namespace Benchmark
             _channel = new Channel<int>();
         }
 
-        //[Benchmark(OperationsPerInvoke = count)]
+        [Benchmark(OperationsPerInvoke = count)]
         public void Write1()
         {
             for (int i = 0; i < count; i++)
@@ -48,7 +48,7 @@ namespace Benchmark
             _channel = new Channel<int>();
         }
 
-        //[Benchmark(OperationsPerInvoke = count)]
+        [Benchmark(OperationsPerInvoke = count)]
         public void Write2()
         {
             for (int i = 0; i < count; i++)

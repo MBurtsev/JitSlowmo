@@ -82,7 +82,7 @@ namespace DataflowChannel
 
         #region ' Structures '
 
-        private sealed class ChannelData
+        private /*sealed class*/ struct ChannelData
         {
             public ChannelData(int capacity)
             {
@@ -95,7 +95,7 @@ namespace DataflowChannel
             }
 
             public readonly CycleBuffer[] Storage;
-            public int WriterOperation;
+            public int WriterOperation = 0;
         }
 
         private sealed class CycleBuffer
