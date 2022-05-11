@@ -16,6 +16,8 @@ namespace DataflowChannel
         private readonly int _capacity;
         private ChannelData _channel;
 
+        int WriterOperation = 0;
+
         public Channel() : this(DEFAULT_SEGMENT_CAPACITY)
         { 
         }
@@ -34,6 +36,20 @@ namespace DataflowChannel
             var operation = channel.WriterOperation;
             
             channel.WriterOperation++;
+            
+            var data = channel.Storage[operation % DATA_CAPACITY];
+            var seg = data.Writer;
+            var pos = seg.WriterPosition;
+
+            seg.WriterMessages[pos] = value;
+        }
+        public void Write00(T value)
+        {
+            var channel = _channel;
+            var operation = channel.WriterOperation;
+            
+            channel.WriterOperation++;
+            //channel.WriterOperation = channel.WriterOperation + 1;
 
             var data = channel.Storage[operation % DATA_CAPACITY];
             var seg = data.Writer;

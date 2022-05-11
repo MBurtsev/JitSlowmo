@@ -1,9 +1,12 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Diagnosers;
 using DataflowChannel;
 
 namespace Benchmark
 {
     [Config(typeof(BenchConfig))]
+    [DisassemblyDiagnoser(printSource: true)]
+    //[HardwareCounters(HardwareCounter.BranchMispredictions, HardwareCounter.BranchInstructions)]
     public class WriteBench
     {
         private const int count = 100_000_000;
@@ -30,7 +33,7 @@ namespace Benchmark
             _channel = new Channel<int>();
         }
 
-        [Benchmark(OperationsPerInvoke = count)]
+        //[Benchmark(OperationsPerInvoke = count)]
         public void Write1()
         {
             for (int i = 0; i < count; i++)
@@ -45,7 +48,7 @@ namespace Benchmark
             _channel = new Channel<int>();
         }
 
-        [Benchmark(OperationsPerInvoke = count)]
+        //[Benchmark(OperationsPerInvoke = count)]
         public void Write2()
         {
             for (int i = 0; i < count; i++)
